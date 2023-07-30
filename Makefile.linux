@@ -1,0 +1,20 @@
+CC = gcc
+CXX = g++
+STRIP = strip
+
+CFLAGS = -O2 -Wall
+CXXFLAGS = `sdl-config --cflags` -O2 -Wall
+LIBS =  -lSDL_image -lpng12 -lz -ljpeg -lm -ldl -lSDL_mixer -lvorbis -lmikmod -lsmpeg -lSDL -lpthread -lX11
+TARGET = beat2x
+OBJS = main.o Engine.o Game.o Menu.o MenuMain.o MenuHiscores.o MenuSettings.o MenuChoosePack.o MenuChooseLevel.o MenuEnterInitials.o Song.o ButtonEvent.o SongStatistics.o ScoresManager.o InputHandler.o FPSCounter.o TextManager.o ThemeManager.o Settings.o
+
+ALL_TARGETS = $(TARGET)
+
+all: $(ALL_TARGETS)
+
+$(TARGET): $(OBJS)
+	   $(CXX) $(LDFLAGS) -o $(TARGET) $(OBJS) $(LIBS)
+	   $(STRIP) $(TARGET)
+
+clean:
+		rm -f $(ALL_TARGETS) *.o *~

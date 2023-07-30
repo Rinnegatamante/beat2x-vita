@@ -1,0 +1,7 @@
+*.elf
+*.velf
+*.vpk
+*.bin
+*.sfo
+sce_sys/*
+*.o
